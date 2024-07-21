@@ -3,7 +3,7 @@ using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
 using CodeBase.Launcher.Infrastructure.Factories;
 
-namespace CodeBase.Launcher.Infrastructure
+namespace CodeBase.Launcher.Infrastructure.States
 {
    public class LoadMainMenuState : IState
    {

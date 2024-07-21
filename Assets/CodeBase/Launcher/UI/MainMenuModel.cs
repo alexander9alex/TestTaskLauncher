@@ -1,5 +1,6 @@
 ﻿using CodeBase.Data;
 using CodeBase.Launcher.Infrastructure;
+using CodeBase.Launcher.Infrastructure.States;
 using UnityEngine;
 
 namespace CodeBase.Launcher.UI

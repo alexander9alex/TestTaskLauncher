@@ -1,4 +1,4 @@
-﻿using CodeBase.Launcher.Data;
+﻿using CodeBase.Launcher.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Services

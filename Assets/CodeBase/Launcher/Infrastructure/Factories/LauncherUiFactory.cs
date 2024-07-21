@@ -1,5 +1,5 @@
 ﻿using CodeBase.Infrastructure.Services;
-using CodeBase.Launcher.Data;
+using CodeBase.Launcher.StaticData;
 using CodeBase.Launcher.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;

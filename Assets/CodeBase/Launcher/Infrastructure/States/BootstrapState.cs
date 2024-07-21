@@ -1,7 +1,7 @@
 ﻿using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
 
-namespace CodeBase.Launcher.Infrastructure
+namespace CodeBase.Launcher.Infrastructure.States
 {
    public class BootstrapState : IState
    {

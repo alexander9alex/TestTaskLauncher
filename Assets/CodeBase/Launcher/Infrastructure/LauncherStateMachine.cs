@@ -1,5 +1,6 @@
 ﻿using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.States;
+using CodeBase.Launcher.Infrastructure.States;
 
 namespace CodeBase.Launcher.Infrastructure
 {

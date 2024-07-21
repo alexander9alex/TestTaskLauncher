@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Launcher.Data
+namespace CodeBase.Launcher.StaticData
 {
    [CreateAssetMenu(menuName = "Static Data/Launcher/Menu Data", fileName = "MenuData", order = 0)]
    public class MenuData : ScriptableObject

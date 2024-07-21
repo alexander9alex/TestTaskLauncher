@@ -1,4 +1,4 @@
-﻿using CodeBase.Launcher.Data;
+﻿using CodeBase.Launcher.StaticData;
 
 namespace CodeBase.Infrastructure.Services
 {

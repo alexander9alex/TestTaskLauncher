@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using CodeBase.Launcher.Infrastructure.States;
+using Zenject;
 
 namespace CodeBase.Launcher.Infrastructure.Installers
 {

@@ -2,7 +2,7 @@
 using CodeBase.Infrastructure.States;
 using UnityEngine;
 
-namespace CodeBase.Launcher.Infrastructure
+namespace CodeBase.Launcher.Infrastructure.States
 {
    public class LoadGameState : IPayloadedState<GameType>
    {
