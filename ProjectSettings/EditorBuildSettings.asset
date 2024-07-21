@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Launcher.unity
     guid: 869fd0c3f31b06a4ba253e058446c0d4
+  - enabled: 1
+    path: Assets/Scenes/Clicker.unity
+    guid: d2c3f91c86ae3c546803511a9ce2d586
   m_configObjects: {}

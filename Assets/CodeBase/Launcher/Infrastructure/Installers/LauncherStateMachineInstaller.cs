@@ -8,7 +8,7 @@ namespace CodeBase.Launcher.Infrastructure.Installers
       
       public override void InstallBindings()
       {
-         Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
+         Container.BindInterfacesAndSelfTo<LauncherBootstrapState>().AsSingle();
          Container.BindInterfacesAndSelfTo<LoadMainMenuState>().AsSingle();
          Container.BindInterfacesAndSelfTo<LoadGameState>().AsSingle();
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using CodeBase.Infrastructure.Factories;
-using Zenject;
+using CodeBase.Infrastructure.States;
 
-namespace CodeBase.Infrastructure.States
+namespace CodeBase.Infrastructure
 {
-   public abstract class StateMachine : IStateMachine, IInitializable
+   public abstract class StateMachine : IStateMachine
    {
       protected readonly IStateFactory _stateFactory;
       
@@ -15,7 +15,6 @@ namespace CodeBase.Infrastructure.States
       protected StateMachine(IStateFactory stateFactory) =>
          _stateFactory = stateFactory;
 
-      public abstract void Initialize();
       public void Enter<TState>() where TState : class, IState
       {
          _currentState?.Exit();

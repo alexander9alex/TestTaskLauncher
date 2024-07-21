@@ -1,4 +1,5 @@
-﻿using CodeBase.Infrastructure.States;
+﻿using CodeBase.Infrastructure;
+using CodeBase.Infrastructure.States;
 
 namespace CodeBase.Launcher.Infrastructure
 {

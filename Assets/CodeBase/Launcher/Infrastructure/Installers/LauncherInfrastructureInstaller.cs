@@ -31,6 +31,7 @@ namespace CodeBase.Launcher.Infrastructure.Installers
       {
          Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
          Container.BindInterfacesAndSelfTo<LauncherUiFactory>().AsSingle();
+         Container.BindInterfacesAndSelfTo<GameStateMachineFactory>().AsSingle();
       }
 
       private void BindCurtain() =>
