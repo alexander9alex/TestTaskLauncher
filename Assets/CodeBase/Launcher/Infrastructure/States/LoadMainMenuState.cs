@@ -20,7 +20,12 @@ namespace CodeBase.Launcher.Infrastructure.States
          _sceneLoader = sceneLoader;
       }
 
-      public void Enter() =>
+      public void Enter()
+      {
+         _curtain.Show(OnShowed);
+      }
+
+      private void OnShowed() =>
          _sceneLoader.LoadScene(LauncherSceneName, OnLoaded);
 
       private void OnLoaded()

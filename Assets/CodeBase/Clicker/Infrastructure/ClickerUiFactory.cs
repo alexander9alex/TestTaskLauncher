@@ -1,15 +1,19 @@
 ﻿using CodeBase.Clicker.StaticData;
 using CodeBase.Clicker.UI;
 using CodeBase.Infrastructure.Services;
+using CodeBase.Launcher.Infrastructure;
 using UnityEngine;
 
 namespace CodeBase.Clicker.Infrastructure
 {
    class ClickerUiFactory : IClickerUiFactory
    {
-      private MenuData _menuData;
-      public ClickerUiFactory(IStaticData staticData)
+      private readonly MenuData _menuData;
+      private readonly ILauncherStateMachine _launcherStateMachine;
+
+      public ClickerUiFactory(IStaticData staticData, ILauncherStateMachine launcherStateMachine)
       {
+         _launcherStateMachine = launcherStateMachine;
          _menuData = staticData.GetClickerMenuData();
       }
 
@@ -17,7 +21,7 @@ namespace CodeBase.Clicker.Infrastructure
       {
          ClickerMenuView clickerMenuView = Object.Instantiate(_menuData.ClickerMenu).GetComponent<ClickerMenuView>();
          
-         ClickerMenuModel clickerMenuModel = new ClickerMenuModel();
+         ClickerMenuModel clickerMenuModel = new ClickerMenuModel(_launcherStateMachine);
          clickerMenuView.Construct(clickerMenuModel);
       }
    }

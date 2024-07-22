@@ -1,5 +1,6 @@
 ﻿using System;
-using UnityEngine;
+using CodeBase.Launcher.Infrastructure;
+using CodeBase.Launcher.Infrastructure.States;
 
 namespace CodeBase.Clicker.UI
 {
@@ -7,6 +8,11 @@ namespace CodeBase.Clicker.UI
    {
       public event Action<int> ScoreChanged;
       private int _score;
+      private readonly ILauncherStateMachine _launcherStateMachine;
+      public ClickerMenuModel(ILauncherStateMachine launcherStateMachine)
+      {
+         _launcherStateMachine = launcherStateMachine;
+      }
 
       public void AddScore()
       {
@@ -16,7 +22,7 @@ namespace CodeBase.Clicker.UI
 
       public void CloseGame()
       {
-         Debug.Log("Game closed!");
+         _launcherStateMachine.Enter<LoadMainMenuState>();
       }
    }
 }

@@ -29,15 +29,15 @@ namespace CodeBase.Clicker.Infrastructure.Factories
 
       private void BindInfrastructure()
       {
-         _container.BindInterfacesAndSelfTo<ClickerUiFactory>().AsSingle();
+         _container.BindInterfacesAndSelfTo<ClickerUiFactory>().AsCached();
       }
 
       private void BindGameStateMachine()
       {
-         _container.BindInterfacesAndSelfTo<LoadProgressState>().AsSingle();
-         _container.BindInterfacesAndSelfTo<LoadGameState>().AsSingle();
+         _container.BindInterfacesAndSelfTo<LoadProgressState>().AsCached();
+         _container.BindInterfacesAndSelfTo<LoadGameState>().AsCached();
 
-         _container.BindInterfacesAndSelfTo<ClickerStateMachine>().AsSingle();
+         _container.BindInterfacesAndSelfTo<ClickerStateMachine>().AsCached();
       }
 
       private void UnbindGameStateMachine()
@@ -45,12 +45,12 @@ namespace CodeBase.Clicker.Infrastructure.Factories
          _container.Unbind<LoadProgressState>();
          _container.Unbind<LoadGameState>();
 
-         _container.Unbind<ClickerStateMachine>();
+         _container.UnbindInterfacesTo<ClickerStateMachine>();
       }
 
       private void UnbindInfrastructure()
       {
-         _container.Unbind<ClickerUiFactory>();
+         _container.UnbindInterfacesTo<ClickerUiFactory>();
       }
    }
 }
