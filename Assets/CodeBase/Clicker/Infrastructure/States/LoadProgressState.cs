@@ -1,5 +1,8 @@
-﻿using CodeBase.Game;
+﻿using CodeBase.Clicker.Data;
+using CodeBase.Clicker.Infrastructure.Services;
+using CodeBase.Game;
 using CodeBase.Infrastructure;
+using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
 
 namespace CodeBase.Clicker.Infrastructure.States
@@ -8,11 +11,16 @@ namespace CodeBase.Clicker.Infrastructure.States
    {
       private readonly ICurtain _curtain;
       private readonly IGameStateMachine _gameStateMachine;
+      private readonly IProgressService _progressService;
+      private readonly ISaveLoadService _saveLoadService;
 
-      public LoadProgressState(ICurtain curtain, IGameStateMachine gameStateMachine)
+      public LoadProgressState(ICurtain curtain, IGameStateMachine gameStateMachine, IProgressService progressService,
+         ISaveLoadService saveLoadService)
       {
          _curtain = curtain;
          _gameStateMachine = gameStateMachine;
+         _progressService = progressService;
+         _saveLoadService = saveLoadService;
       }
 
       public void Enter()
@@ -22,14 +30,11 @@ namespace CodeBase.Clicker.Infrastructure.States
 
       private void OnShowed()
       {
-         // loading progress...
+         _progressService.Progress = _saveLoadService.LoadProgress() ?? new();
 
          _gameStateMachine.Enter<LoadGameState>();
       }
 
-      public void Exit()
-      {
-         
-      }
+      public void Exit() { }
    }
 }

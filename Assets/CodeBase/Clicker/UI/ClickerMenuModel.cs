@@ -1,17 +1,20 @@
 ﻿using System;
-using CodeBase.Launcher.Infrastructure;
-using CodeBase.Launcher.Infrastructure.States;
+using CodeBase.Clicker.Data;
+using CodeBase.Clicker.Infrastructure.States;
+using CodeBase.Infrastructure;
+using CodeBase.Infrastructure.Services;
 
 namespace CodeBase.Clicker.UI
 {
-   public class ClickerMenuModel
+   public class ClickerMenuModel : ISaver, ILoader
    {
       public event Action<int> ScoreChanged;
       private int _score;
-      private readonly ILauncherStateMachine _launcherStateMachine;
-      public ClickerMenuModel(ILauncherStateMachine launcherStateMachine)
+      private readonly IGameStateMachine _gameStateMachine;
+
+      public ClickerMenuModel(IGameStateMachine gameStateMachine)
       {
-         _launcherStateMachine = launcherStateMachine;
+         _gameStateMachine = gameStateMachine;
       }
 
       public void AddScore()
@@ -20,9 +23,16 @@ namespace CodeBase.Clicker.UI
          ScoreChanged?.Invoke(_score);
       }
 
-      public void CloseGame()
+      public void CloseGame() =>
+         _gameStateMachine.Enter<EndGameState>();
+
+      public void LoadProgress(ClickerProgress progress)
       {
-         _launcherStateMachine.Enter<LoadMainMenuState>();
+         _score = progress.Score;
+         ScoreChanged?.Invoke(_score);
       }
+
+      public void SaveProgress(ClickerProgress progress) =>
+         progress.Score = _score;
    }
 }

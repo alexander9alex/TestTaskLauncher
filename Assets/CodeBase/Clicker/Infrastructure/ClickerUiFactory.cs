@@ -1,7 +1,7 @@
 ﻿using CodeBase.Clicker.StaticData;
 using CodeBase.Clicker.UI;
+using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Services;
-using CodeBase.Launcher.Infrastructure;
 using UnityEngine;
 
 namespace CodeBase.Clicker.Infrastructure
@@ -9,20 +9,24 @@ namespace CodeBase.Clicker.Infrastructure
    class ClickerUiFactory : IClickerUiFactory
    {
       private readonly MenuData _menuData;
-      private readonly ILauncherStateMachine _launcherStateMachine;
+      private readonly IProgressChangers _progressChangers;
+      private readonly IGameStateMachine _gameStateMachine;
 
-      public ClickerUiFactory(IStaticData staticData, ILauncherStateMachine launcherStateMachine)
+      public ClickerUiFactory(IStaticData staticData, IProgressChangers progressChangers, IGameStateMachine gameStateMachine)
       {
-         _launcherStateMachine = launcherStateMachine;
+         _progressChangers = progressChangers;
+         _gameStateMachine = gameStateMachine;
          _menuData = staticData.GetClickerMenuData();
       }
 
       public void CreateClickerMenu()
       {
          ClickerMenuView clickerMenuView = Object.Instantiate(_menuData.ClickerMenu).GetComponent<ClickerMenuView>();
-         
-         ClickerMenuModel clickerMenuModel = new ClickerMenuModel(_launcherStateMachine);
+
+         ClickerMenuModel clickerMenuModel = new ClickerMenuModel(_gameStateMachine);
          clickerMenuView.Construct(clickerMenuModel);
+
+         _progressChangers.Register(clickerMenuModel);
       }
    }
 }

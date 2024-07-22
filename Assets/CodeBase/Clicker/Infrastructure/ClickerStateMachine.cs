@@ -15,6 +15,8 @@ namespace CodeBase.Clicker.Infrastructure
          {
             { typeof(LoadProgressState), _stateFactory.CreateState<LoadProgressState>() },
             { typeof(LoadGameState), _stateFactory.CreateState<LoadGameState>() },
+            { typeof(GameLoopState), _stateFactory.CreateState<GameLoopState>() },
+            { typeof(EndGameState), _stateFactory.CreateState<EndGameState>() },
          };
       }
 
