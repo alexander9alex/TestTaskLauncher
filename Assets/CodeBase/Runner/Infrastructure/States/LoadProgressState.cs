@@ -1,9 +1,9 @@
-﻿using CodeBase.Clicker.Infrastructure.Services;
-using CodeBase.Game;
+﻿using CodeBase.Game;
 using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.States;
+using CodeBase.Runner.Infrastructure.Services;
 
-namespace CodeBase.Clicker.Infrastructure.States
+namespace CodeBase.Runner.Infrastructure.States
 {
    internal class LoadProgressState : IState
    {
@@ -21,10 +21,8 @@ namespace CodeBase.Clicker.Infrastructure.States
          _saveLoadService = saveLoadService;
       }
 
-      public void Enter()
-      {
+      public void Enter() =>
          _curtain.Show(OnShowed);
-      }
 
       private void OnShowed()
       {

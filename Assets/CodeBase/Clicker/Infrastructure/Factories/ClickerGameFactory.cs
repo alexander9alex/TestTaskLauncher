@@ -1,6 +1,8 @@
 using CodeBase.Clicker.Infrastructure.Services;
 using CodeBase.Clicker.Infrastructure.States;
 using CodeBase.Infrastructure;
+using CodeBase.Infrastructure.Factories;
+using CodeBase.Infrastructure.Services;
 using Zenject;
 
 namespace CodeBase.Clicker.Infrastructure.Factories

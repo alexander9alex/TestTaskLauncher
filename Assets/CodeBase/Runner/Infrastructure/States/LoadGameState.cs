@@ -1,39 +1,38 @@
-﻿using CodeBase.Clicker.Infrastructure.Services;
-using CodeBase.Game;
+﻿using CodeBase.Game;
 using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
+using CodeBase.Runner.Infrastructure.Services;
 
-namespace CodeBase.Clicker.Infrastructure.States
+namespace CodeBase.Runner.Infrastructure.States
 {
-   public class LoadGameState : IState
+   internal class LoadGameState : IState
    {
-      private const string ClickerSceneName = "Clicker";
+      private const string RunnerSceneName = "Runner";
 
       private readonly ICurtain _curtain;
       private readonly ISceneLoader _sceneLoader;
-      private readonly IClickerUiFactory _clickerUiFactory;
       private readonly IProgressChangers _progressChangers;
       private readonly IProgressService _progressService;
       private readonly IGameStateMachine _gameStateMachine;
 
-      public LoadGameState(ICurtain curtain, ISceneLoader sceneLoader, IClickerUiFactory clickerUiFactory,
+      public LoadGameState(ICurtain curtain, ISceneLoader sceneLoader,
          IProgressChangers progressChangers, IProgressService progressService, IGameStateMachine gameStateMachine)
       {
          _curtain = curtain;
          _sceneLoader = sceneLoader;
-         _clickerUiFactory = clickerUiFactory;
          _progressChangers = progressChangers;
          _progressService = progressService;
          _gameStateMachine = gameStateMachine;
       }
 
       public void Enter() =>
-         _sceneLoader.LoadScene(ClickerSceneName, OnLoaded);
+         _sceneLoader.LoadScene(RunnerSceneName, OnLoaded);
 
       private void OnLoaded()
       {
-         _clickerUiFactory.CreateClickerMenu();
+         // init world
+         
          LoadProgress();
 
          _curtain.Hide();

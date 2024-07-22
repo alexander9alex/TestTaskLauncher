@@ -9,10 +9,8 @@ namespace CodeBase.Launcher.UI
    {
       private readonly ILauncherStateMachine _launcherStateMachine;
 
-      public MainMenuModel(ILauncherStateMachine launcherStateMachine)
-      {
+      public MainMenuModel(ILauncherStateMachine launcherStateMachine) =>
          _launcherStateMachine = launcherStateMachine;
-      }
 
       public void StartClicker() =>
          _launcherStateMachine.Enter<LoadGameState, GameType>(GameType.Clicker);

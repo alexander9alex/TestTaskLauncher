@@ -9,10 +9,8 @@ namespace CodeBase.Launcher.Infrastructure.States
    {
       private readonly IGameStateMachineFactory _gameStateMachineFactory;
 
-      public LoadGameState(IGameStateMachineFactory gameStateMachineFactory)
-      {
+      public LoadGameState(IGameStateMachineFactory gameStateMachineFactory) =>
          _gameStateMachineFactory = gameStateMachineFactory;
-      }
 
       public void Enter(GameType gameType)
       {

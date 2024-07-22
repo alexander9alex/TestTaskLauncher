@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using CodeBase.Clicker.UI;
+using System.Collections.Generic;
 
-namespace CodeBase.Infrastructure.Services
+namespace CodeBase.Runner.Infrastructure.Services
 {
-   public interface IProgressChangers
+   internal interface IProgressChangers
    {
       public List<ISaver> Savers { get; }
       public List<ILoader> Loaders { get; }

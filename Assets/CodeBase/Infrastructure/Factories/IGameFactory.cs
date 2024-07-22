@@ -1,6 +1,4 @@
-﻿using CodeBase.Infrastructure;
-
-namespace CodeBase.Clicker.Infrastructure.Factories
+﻿namespace CodeBase.Infrastructure.Factories
 {
    internal interface IGameFactory
    {

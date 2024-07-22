@@ -1,6 +1,7 @@
 ﻿using System;
-using CodeBase.Clicker.Infrastructure.Factories;
 using CodeBase.Data;
+using CodeBase.Clicker.Infrastructure.Factories;
+using CodeBase.Runner.Infrastructure.Factories;
 using Zenject;
 
 namespace CodeBase.Infrastructure.Factories
@@ -28,6 +29,7 @@ namespace CodeBase.Infrastructure.Factories
                _currentGameFactory = new ClickerGameFactory(_container);
                break;
             case GameType.Runner:
+               _currentGameFactory = new RunnerGameFactory(_container);
                break;
             default:
                throw new ArgumentOutOfRangeException(nameof(gameType), gameType, null);

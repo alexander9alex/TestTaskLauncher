@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using CodeBase.Infrastructure.Services;
+using CodeBase.Runner.Infrastructure.Services;
 
-namespace CodeBase.Clicker.Infrastructure.Services
+namespace CodeBase.Infrastructure.Services
 {
    class ProgressChangers : IProgressChangers
    {

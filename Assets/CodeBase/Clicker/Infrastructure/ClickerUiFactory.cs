@@ -1,4 +1,5 @@
-﻿using CodeBase.Clicker.StaticData;
+﻿using CodeBase.Clicker.Infrastructure.Services;
+using CodeBase.Clicker.StaticData;
 using CodeBase.Clicker.UI;
 using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Services;

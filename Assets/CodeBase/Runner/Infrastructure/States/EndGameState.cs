@@ -1,12 +1,11 @@
-﻿using CodeBase.Clicker.Infrastructure.Services;
-using CodeBase.Infrastructure.Services;
-using CodeBase.Infrastructure.States;
+﻿using CodeBase.Infrastructure.States;
 using CodeBase.Launcher.Infrastructure;
 using CodeBase.Launcher.Infrastructure.States;
+using CodeBase.Runner.Infrastructure.Services;
 
-namespace CodeBase.Clicker.Infrastructure.States
+namespace CodeBase.Runner.Infrastructure.States
 {
-   public class EndGameState : IState
+   internal class EndGameState : IState
    {
       private readonly ISaveLoadService _saveLoadService;
       private readonly IProgressChangers _progressChangers;
@@ -23,7 +22,7 @@ namespace CodeBase.Clicker.Infrastructure.States
       {
          _saveLoadService.SaveProgress();
          _progressChangers.CleanUp();
-         
+
          _launcherStateMachine.Enter<LoadMainMenuState>();
       }
 
