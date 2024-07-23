@@ -11,11 +11,28 @@ namespace CodeBase.Runner.Infrastructure.Services
 
       public event Action<Vector3> Move;
 
+      private bool _started = true;
+
+      public void StartInput() =>
+         _started = true;
+
+      public void StopInput()
+      {
+         _started = false;
+         Move?.Invoke(Vector3.zero);
+      }
+
       public void Tick() =>
          TryMove();
 
+      public void CleanUp() =>
+         Move = null;
+
       private void TryMove()
       {
+         if (!_started)
+            return;
+         
          Vector3 moveDir = new Vector3();
 
          if (Input.GetAxisRaw(HorizontalAxisName) != 0)

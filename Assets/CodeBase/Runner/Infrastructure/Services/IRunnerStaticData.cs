@@ -7,5 +7,6 @@ namespace CodeBase.Runner.Infrastructure.Services
    {
       LocationData GetLocationData();
       HeroData GetHeroData();
+      MenuData GetMenuData();
    }
 }

@@ -5,6 +5,6 @@ namespace CodeBase.Runner.Data
    [Serializable]
    internal class RunnerProgress
    {
-      public float RecordTime;
+      public float RecordTime = Single.PositiveInfinity;
    }
 }

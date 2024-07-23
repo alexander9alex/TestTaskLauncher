@@ -1,6 +1,5 @@
 ﻿using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Factories;
-using CodeBase.Infrastructure.Services;
 using CodeBase.Runner.Infrastructure.Services;
 using CodeBase.Runner.Infrastructure.States;
 using Zenject;
@@ -37,14 +36,10 @@ namespace CodeBase.Runner.Infrastructure.Factories
          _container.BindInterfacesAndSelfTo<RunnerStaticData>().AsCached();
          _container.BindInterfacesAndSelfTo<LocationFactory>().AsCached();
          _container.BindInterfacesAndSelfTo<HeroFactory>().AsCached();
+         _container.BindInterfacesAndSelfTo<RunnerUiFactory>().AsCached();
 
          BindInputService();
-      }
-
-      private void BindInputService()
-      {
-         _container.BindInterfacesAndSelfTo<InputService>().AsCached().OnInstantiated<InputService>((context, obj) =>
-            context.Container.Resolve<TickableManager>().Add(obj));
+         BindGameTimerService();
       }
 
       private void BindGameStateMachine()
@@ -52,6 +47,7 @@ namespace CodeBase.Runner.Infrastructure.Factories
          _container.BindInterfacesAndSelfTo<LoadProgressState>().AsCached();
          _container.BindInterfacesAndSelfTo<LoadGameState>().AsCached();
          _container.BindInterfacesAndSelfTo<GameLoopState>().AsCached();
+         _container.BindInterfacesAndSelfTo<RestartGameState>().AsCached();
          _container.BindInterfacesAndSelfTo<EndGameState>().AsCached();
 
          _container.BindInterfacesAndSelfTo<RunnerStateMachine>().AsCached();
@@ -61,11 +57,13 @@ namespace CodeBase.Runner.Infrastructure.Factories
       {
          _container.UnbindInterfacesTo<ProgressService>();
          _container.UnbindInterfacesTo<SaveLoadService>();
+         _container.UnbindInterfacesTo<GameTimerService>();
          _container.UnbindInterfacesTo<InputService>();
          _container.UnbindInterfacesTo<ProgressChangers>();
          _container.UnbindInterfacesTo<RunnerStaticData>();
          _container.UnbindInterfacesTo<LocationFactory>();
          _container.UnbindInterfacesTo<HeroFactory>();
+         _container.UnbindInterfacesTo<RunnerUiFactory>();
       }
 
       private void UnbindGameStateMachine()
@@ -73,9 +71,18 @@ namespace CodeBase.Runner.Infrastructure.Factories
          _container.Unbind<LoadProgressState>();
          _container.Unbind<LoadGameState>();
          _container.Unbind<GameLoopState>();
+         _container.Unbind<RestartGameState>();
          _container.Unbind<EndGameState>();
 
          _container.UnbindInterfacesTo<RunnerStateMachine>();
       }
+
+      private void BindInputService() =>
+         _container.BindInterfacesAndSelfTo<InputService>().AsCached().OnInstantiated<InputService>((context, obj) =>
+            context.Container.Resolve<TickableManager>().Add(obj));
+
+      private void BindGameTimerService() =>
+         _container.BindInterfacesAndSelfTo<GameTimerService>().AsCached().OnInstantiated<GameTimerService>((context, obj) =>
+            context.Container.Resolve<TickableManager>().Add(obj));
    }
 }

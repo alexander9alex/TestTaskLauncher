@@ -14,11 +14,5 @@ namespace CodeBase.Clicker.Infrastructure.Services
          if (obj is ILoader loader)
             Loaders.Add(loader);
       }
-
-      public void CleanUp()
-      {
-         Savers.Clear();
-         Loaders.Clear();
-      }
    }
 }

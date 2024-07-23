@@ -5,6 +5,9 @@ namespace CodeBase.Runner.Infrastructure.Services
 {
    internal interface IInputService
    {
-      public event Action<Vector3> Move;
+      void StartInput();
+      void StopInput();
+      event Action<Vector3> Move;
+      void CleanUp();
    }
 }

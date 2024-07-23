@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-
-namespace CodeBase.Runner.Infrastructure.Factories
+﻿namespace CodeBase.Runner.Infrastructure.Factories
 {
    internal interface ILocationFactory
    {
       void CreateRunnerLocation();
+      void CleanUp();
    }
 }

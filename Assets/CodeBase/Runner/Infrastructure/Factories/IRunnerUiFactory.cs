@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
 namespace CodeBase.Runner.Infrastructure.Factories
 {
-   internal interface IHeroFactory
+   internal interface IRunnerUiFactory
    {
-      void CreateHero();
+      void CreateScoreMenu();
       void CleanUp();
    }
 }

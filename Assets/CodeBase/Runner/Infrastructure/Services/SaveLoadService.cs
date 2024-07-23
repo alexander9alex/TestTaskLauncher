@@ -5,7 +5,7 @@ namespace CodeBase.Runner.Infrastructure.Services
 {
    class SaveLoadService : ISaveLoadService
    {
-      private const string ClickerDataKey = "ClickerData";
+      private const string RunnerDataKey = "RunnerData";
 
       private readonly IProgressService _progressService;
       private readonly IProgressChangers _progressChangers;
@@ -21,14 +21,14 @@ namespace CodeBase.Runner.Infrastructure.Services
          foreach (ISaver saver in _progressChangers.Savers)
             saver.SaveProgress(_progressService.Progress);
          
-         string jsonProgress = JsonUtility.ToJson(_progressService.Progress);
-         PlayerPrefs.SetString(ClickerDataKey, jsonProgress);
+         string progressJson = JsonUtility.ToJson(_progressService.Progress);
+         PlayerPrefs.SetString(RunnerDataKey, progressJson);
       }
 
       public RunnerProgress LoadProgress()
       {
-         string json = PlayerPrefs.GetString(ClickerDataKey);
-         return JsonUtility.FromJson<RunnerProgress>(json);
+         string progressJson = PlayerPrefs.GetString(RunnerDataKey);
+         return JsonUtility.FromJson<RunnerProgress>(progressJson);
       }
    }
 }

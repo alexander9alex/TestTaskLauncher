@@ -12,6 +12,8 @@ namespace CodeBase.Runner.Infrastructure.Factories
       private readonly HeroData _heroData;
       private readonly LocationData _locationData;
       private readonly IInputService _inputService;
+      
+      private GameObject _hero;
 
       public HeroFactory(IRunnerStaticData staticData, IInputService inputService)
       {
@@ -22,9 +24,14 @@ namespace CodeBase.Runner.Infrastructure.Factories
 
       public void CreateHero()
       {
-         GameObject hero = Object.Instantiate(_heroData.Hero, _locationData.HeroPosition, Quaternion.identity);
-         hero.GetComponent<HeroMover>().Construct(_inputService);
-         hero.GetComponent<HeroAnimator>().Construct(_inputService);
+         _hero = Object.Instantiate(_heroData.Hero, _locationData.HeroPosition, Quaternion.identity);
+         _hero.GetComponent<HeroMover>().Construct(_inputService);
+         _hero.GetComponent<HeroAnimator>().Construct(_inputService);
+      }
+
+      public void CleanUp()
+      {
+         Object.Destroy(_hero);
       }
    }
 }
