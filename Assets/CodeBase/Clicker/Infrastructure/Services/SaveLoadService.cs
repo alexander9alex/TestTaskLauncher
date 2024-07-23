@@ -1,5 +1,4 @@
 ﻿using CodeBase.Clicker.Data;
-using CodeBase.Infrastructure.Services;
 using UnityEngine;
 
 namespace CodeBase.Clicker.Infrastructure.Services

@@ -12,12 +12,12 @@ namespace CodeBase.Runner.Infrastructure
       {
          _states = new()
          {
-         { typeof(LoadProgressState), _stateFactory.CreateState<LoadProgressState>() },
-         { typeof(LoadGameState), _stateFactory.CreateState<LoadGameState>() },
-         { typeof(GameLoopState), _stateFactory.CreateState<GameLoopState>() },
-         { typeof(EndGameState), _stateFactory.CreateState<EndGameState>() },
+            { typeof(LoadProgressState), _stateFactory.CreateState<LoadProgressState>() },
+            { typeof(LoadGameState), _stateFactory.CreateState<LoadGameState>() },
+            { typeof(GameLoopState), _stateFactory.CreateState<GameLoopState>() },
+            { typeof(EndGameState), _stateFactory.CreateState<EndGameState>() },
          };
-}
+      }
 
       public void StartGame() =>
          Enter<LoadProgressState>();

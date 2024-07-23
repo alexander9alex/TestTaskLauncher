@@ -23,7 +23,7 @@ namespace CodeBase.Launcher.Infrastructure.Installers
       private void BindServices()
       {
          Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
-         Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();
+         Container.BindInterfacesAndSelfTo<LauncherStaticDataService>().AsSingle();
          BindCoroutineRunner();
       }
 

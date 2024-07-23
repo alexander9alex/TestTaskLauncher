@@ -2,7 +2,6 @@
 using CodeBase.Clicker.StaticData;
 using CodeBase.Clicker.UI;
 using CodeBase.Infrastructure;
-using CodeBase.Infrastructure.Services;
 using UnityEngine;
 
 namespace CodeBase.Clicker.Infrastructure
@@ -13,7 +12,7 @@ namespace CodeBase.Clicker.Infrastructure
       private readonly IProgressChangers _progressChangers;
       private readonly IGameStateMachine _gameStateMachine;
 
-      public ClickerUiFactory(IStaticData staticData, IProgressChangers progressChangers, IGameStateMachine gameStateMachine)
+      public ClickerUiFactory(IClickerStaticData staticData, IProgressChangers progressChangers, IGameStateMachine gameStateMachine)
       {
          _progressChangers = progressChangers;
          _gameStateMachine = gameStateMachine;

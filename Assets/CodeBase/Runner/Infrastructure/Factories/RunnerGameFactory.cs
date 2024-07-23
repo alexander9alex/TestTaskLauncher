@@ -10,6 +10,7 @@ namespace CodeBase.Runner.Infrastructure.Factories
    internal class RunnerGameFactory : IGameFactory
    {
       private readonly DiContainer _container;
+
       public RunnerGameFactory(DiContainer container) =>
          _container = container;
 
@@ -33,6 +34,17 @@ namespace CodeBase.Runner.Infrastructure.Factories
          _container.BindInterfacesAndSelfTo<ProgressService>().AsCached();
          _container.BindInterfacesAndSelfTo<SaveLoadService>().AsCached();
          _container.BindInterfacesAndSelfTo<ProgressChangers>().AsCached();
+         _container.BindInterfacesAndSelfTo<RunnerStaticData>().AsCached();
+         _container.BindInterfacesAndSelfTo<LocationFactory>().AsCached();
+         _container.BindInterfacesAndSelfTo<HeroFactory>().AsCached();
+
+         BindInputService();
+      }
+
+      private void BindInputService()
+      {
+         _container.BindInterfacesAndSelfTo<InputService>().AsCached().OnInstantiated<InputService>((context, obj) =>
+            context.Container.Resolve<TickableManager>().Add(obj));
       }
 
       private void BindGameStateMachine()
@@ -49,7 +61,11 @@ namespace CodeBase.Runner.Infrastructure.Factories
       {
          _container.UnbindInterfacesTo<ProgressService>();
          _container.UnbindInterfacesTo<SaveLoadService>();
+         _container.UnbindInterfacesTo<InputService>();
          _container.UnbindInterfacesTo<ProgressChangers>();
+         _container.UnbindInterfacesTo<RunnerStaticData>();
+         _container.UnbindInterfacesTo<LocationFactory>();
+         _container.UnbindInterfacesTo<HeroFactory>();
       }
 
       private void UnbindGameStateMachine()

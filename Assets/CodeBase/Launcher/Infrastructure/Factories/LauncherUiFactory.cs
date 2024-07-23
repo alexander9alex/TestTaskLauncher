@@ -11,10 +11,10 @@ namespace CodeBase.Launcher.Infrastructure.Factories
       private readonly MenuData _menuData;
       private readonly ILauncherStateMachine _launcherStateMachine;
 
-      public LauncherUiFactory(IStaticData staticData, ILauncherStateMachine launcherStateMachine)
+      public LauncherUiFactory(ILauncherStaticData launcherStaticData, ILauncherStateMachine launcherStateMachine)
       {
          _launcherStateMachine = launcherStateMachine;
-         _menuData = staticData.GetLauncherMenuData();
+         _menuData = launcherStaticData.GetLauncherMenuData();
       }
 
       public void CreateMainMenu()
