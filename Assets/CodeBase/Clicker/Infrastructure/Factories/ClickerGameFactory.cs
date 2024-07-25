@@ -32,7 +32,6 @@ namespace CodeBase.Clicker.Infrastructure.Factories
          _container.BindInterfacesAndSelfTo<ProgressService>().AsCached();
          _container.BindInterfacesAndSelfTo<SaveLoadService>().AsCached();
          _container.BindInterfacesAndSelfTo<ProgressChangers>().AsCached();
-         _container.BindInterfacesAndSelfTo<ClickerStaticData>().AsCached();
          _container.BindInterfacesAndSelfTo<ClickerUiFactory>().AsCached();
       }
 
@@ -52,7 +51,6 @@ namespace CodeBase.Clicker.Infrastructure.Factories
          _container.UnbindInterfacesTo<ProgressService>();
          _container.UnbindInterfacesTo<SaveLoadService>();
          _container.UnbindInterfacesTo<ProgressChangers>();
-         _container.UnbindInterfacesTo<ClickerStaticData>();
       }
 
       private void UnbindGameStateMachine()

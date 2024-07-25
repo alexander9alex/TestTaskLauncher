@@ -1,26 +1,27 @@
 ﻿using CodeBase.Infrastructure;
+using CodeBase.Infrastructure.Services;
+using CodeBase.Runner.Data;
 using CodeBase.Runner.Game.UI;
 using CodeBase.Runner.Infrastructure.Services;
-using CodeBase.Runner.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Runner.Infrastructure.Factories
 {
    class RunnerUiFactory : IRunnerUiFactory
    {
-      private readonly MenuData _menuData;
       private readonly IGameTimerService _gameTimerService;
       private readonly IInputService _inputService;
       private readonly IGameStateMachine _gameStateMachine;
       private readonly ISaveLoadService _saveLoadService;
       private readonly IProgressChangers _progressChangers;
       private readonly IProgressService _progressService;
+      private readonly IRunnerAssets _assets;
       
       private GameObject _scoreMenu;
 
-      public RunnerUiFactory(IRunnerStaticData staticData, IGameTimerService gameTimerService, IInputService inputService,
+      public RunnerUiFactory(IGameTimerService gameTimerService, IInputService inputService,
          IGameStateMachine gameStateMachine, ISaveLoadService saveLoadService, IProgressChangers progressChangers,
-         IProgressService progressService)
+         IProgressService progressService, IRunnerAssets assets)
       {
          _gameTimerService = gameTimerService;
          _inputService = inputService;
@@ -28,12 +29,14 @@ namespace CodeBase.Runner.Infrastructure.Factories
          _saveLoadService = saveLoadService;
          _progressChangers = progressChangers;
          _progressService = progressService;
-         _menuData = staticData.GetMenuData();
+         _assets = assets;
       }
 
-      public void CreateScoreMenu()
+      public async void CreateResultMenu()
       {
-         _scoreMenu = Object.Instantiate(_menuData.ResultMenu);
+         GameObject resultMenuPrefab = await _assets.Load<GameObject>(RunnerAssetAddress.ResultMenu);
+         _scoreMenu = Object.Instantiate(resultMenuPrefab);
+         
          ResultMenuModel resultMenuModel = new ResultMenuModel(_gameTimerService, _inputService, _gameStateMachine, _saveLoadService,
             _progressService.Progress);
          _progressChangers.Register(resultMenuModel);
@@ -42,6 +45,6 @@ namespace CodeBase.Runner.Infrastructure.Factories
       }
 
       public void CleanUp() =>
-         Object.Instantiate(_scoreMenu);
+         Object.Destroy(_scoreMenu);
    }
 }

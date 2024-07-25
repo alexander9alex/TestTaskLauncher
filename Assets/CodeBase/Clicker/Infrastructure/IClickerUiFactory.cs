@@ -1,7 +1,9 @@
-﻿namespace CodeBase.Clicker.Infrastructure
+﻿using System.Threading.Tasks;
+
+namespace CodeBase.Clicker.Infrastructure
 {
    public interface IClickerUiFactory
    {
-      void CreateClickerMenu();
+      Task CreateClickerMenu();
    }
 }

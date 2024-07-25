@@ -1,4 +1,5 @@
-﻿using CodeBase.Game;
+﻿using CodeBase.Clicker.Infrastructure;
+using CodeBase.Game;
 using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Launcher.Infrastructure.Factories;
@@ -24,7 +25,14 @@ namespace CodeBase.Launcher.Infrastructure.Installers
       {
          Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<LauncherStaticDataService>().AsSingle();
+         BindAssetProviders();
          BindCoroutineRunner();
+      }
+
+      private void BindAssetProviders()
+      {
+         Container.Bind<IClickerAssets>().To<AssetProvider>().AsCached();
+         Container.Bind<IRunnerAssets>().To<AssetProvider>().AsCached();
       }
 
       private void BindFactories()

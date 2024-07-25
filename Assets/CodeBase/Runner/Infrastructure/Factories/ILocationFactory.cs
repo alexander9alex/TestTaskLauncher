@@ -1,8 +1,10 @@
-﻿namespace CodeBase.Runner.Infrastructure.Factories
+﻿using System.Threading.Tasks;
+
+namespace CodeBase.Runner.Infrastructure.Factories
 {
    internal interface ILocationFactory
    {
-      void CreateRunnerLocation();
+      Task CreateRunnerLocation();
       void CleanUp();
    }
 }

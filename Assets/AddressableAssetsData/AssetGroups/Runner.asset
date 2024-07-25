@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Runner
+  m_EditorClassIdentifier: 
+  m_GroupName: Runner
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 08bff07d4adeb2347a88dbc7e0b596e2
+  m_SerializeEntries:
+  - m_GUID: 760a4905d74c81f4e84ded4cfaf69f90
+    m_Address: Runner/ResultMenu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dfbb63c9cdf7504faf4ff26b0581598
+    m_Address: Runner/Hero
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23ec78d8683e46446ac1fbcb566467a8
+    m_Address: Runner/RunnerLocation
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4c8a8af68169ec4c8749e38f58b1997
+    m_Address: Runner/Finish
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 25a31766909400540871bc3eb3799a9c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7c0a49d35a9b7bd47a1d292c2e96f0e0, type: 2}
+    - {fileID: 11400000, guid: 4c68ff051d323794d8bb7af9a4281ed7, type: 2}

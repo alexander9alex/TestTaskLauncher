@@ -1,4 +1,5 @@
-﻿using CodeBase.Game;
+﻿using System.Threading.Tasks;
+using CodeBase.Game;
 using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
@@ -35,19 +36,19 @@ namespace CodeBase.Runner.Infrastructure.States
       public void Enter() =>
          _sceneLoader.LoadScene(RunnerSceneName, OnLoaded);
 
-      private void OnLoaded()
+      private async void OnLoaded()
       {
-         InitWorld();
+         await InitWorld();
          LoadProgress();
 
          _curtain.Hide();
          _gameStateMachine.Enter<GameLoopState>();
       }
 
-      private void InitWorld()
+      private async Task InitWorld()
       {
-         _locationFactory.CreateRunnerLocation();
-         _heroFactory.CreateHero();
+         await _locationFactory.CreateRunnerLocation();
+         await _heroFactory.CreateHero();
       }
 
       private void LoadProgress()

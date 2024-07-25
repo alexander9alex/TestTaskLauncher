@@ -31,9 +31,9 @@ namespace CodeBase.Clicker.Infrastructure.States
       public void Enter() =>
          _sceneLoader.LoadScene(ClickerSceneName, OnLoaded);
 
-      private void OnLoaded()
+      private async void OnLoaded()
       {
-         _clickerUiFactory.CreateClickerMenu();
+         await _clickerUiFactory.CreateClickerMenu();
          LoadProgress();
 
          _curtain.Hide();

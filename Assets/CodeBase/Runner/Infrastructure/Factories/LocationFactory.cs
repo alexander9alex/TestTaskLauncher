@@ -1,4 +1,6 @@
-﻿using CodeBase.Runner.Game;
+﻿using System.Threading.Tasks;
+using CodeBase.Infrastructure.Services;
+using CodeBase.Runner.Game;
 using CodeBase.Runner.Infrastructure.Services;
 using CodeBase.Runner.StaticData;
 using UnityEngine;
@@ -10,18 +12,24 @@ namespace CodeBase.Runner.Infrastructure.Factories
    {
       private readonly LocationData _locationData;
       private readonly IRunnerUiFactory _runnerUiFactory;
+      private readonly IRunnerAssets _assets;
+      
       private Transform _runnerLocation;
 
-      public LocationFactory(IRunnerStaticData staticData, IRunnerUiFactory runnerUiFactory)
+      public LocationFactory(IRunnerStaticData staticData, IRunnerUiFactory runnerUiFactory, IRunnerAssets assets)
       {
          _runnerUiFactory = runnerUiFactory;
+         _assets = assets;
          _locationData = staticData.GetLocationData();
       }
 
-      public void CreateRunnerLocation()
+      public async Task CreateRunnerLocation()
       {
-         _runnerLocation = Object.Instantiate(_locationData.RunnerLocation).transform;
-         GameObject finish = Object.Instantiate(_locationData.Finish, _locationData.FinishPosition, Quaternion.identity, _runnerLocation);
+         GameObject locationPrefab = await _assets.Load<GameObject>(_locationData.RunnerLocationReference);
+         _runnerLocation = Object.Instantiate(locationPrefab).transform;
+
+         GameObject finishPrefab = await _assets.Load<GameObject>(_locationData.FinishReference);
+         GameObject finish = Object.Instantiate(finishPrefab, _locationData.FinishPosition, Quaternion.identity, _runnerLocation);
          finish.GetComponent<FinishTrigger>().Construct(OnFinished);
       }
 
@@ -29,6 +37,6 @@ namespace CodeBase.Runner.Infrastructure.Factories
          Object.Destroy(_runnerLocation.gameObject);
 
       private void OnFinished() =>
-         _runnerUiFactory.CreateScoreMenu();
+         _runnerUiFactory.CreateResultMenu();
    }
 }

@@ -1,27 +1,31 @@
-﻿using CodeBase.Clicker.Infrastructure.Services;
-using CodeBase.Clicker.StaticData;
+﻿using System.Threading.Tasks;
+using CodeBase.Clicker.Data;
+using CodeBase.Clicker.Infrastructure.Services;
 using CodeBase.Clicker.UI;
 using CodeBase.Infrastructure;
+using CodeBase.Infrastructure.Services;
 using UnityEngine;
 
 namespace CodeBase.Clicker.Infrastructure
 {
    class ClickerUiFactory : IClickerUiFactory
    {
-      private readonly MenuData _menuData;
       private readonly IProgressChangers _progressChangers;
       private readonly IGameStateMachine _gameStateMachine;
+      private readonly IClickerAssets _assets;
 
-      public ClickerUiFactory(IClickerStaticData staticData, IProgressChangers progressChangers, IGameStateMachine gameStateMachine)
+      public ClickerUiFactory(IProgressChangers progressChangers, IGameStateMachine gameStateMachine, IClickerAssets assets)
       {
          _progressChangers = progressChangers;
          _gameStateMachine = gameStateMachine;
-         _menuData = staticData.GetClickerMenuData();
+         _assets = assets;
       }
 
-      public void CreateClickerMenu()
+      public async Task CreateClickerMenu()
       {
-         ClickerMenuView clickerMenuView = Object.Instantiate(_menuData.ClickerMenu).GetComponent<ClickerMenuView>();
+         GameObject prefab = await _assets.Load<GameObject>(ClickerAssetAddress.ClickerMenu);
+
+         ClickerMenuView clickerMenuView = Object.Instantiate(prefab).GetComponent<ClickerMenuView>();
 
          ClickerMenuModel clickerMenuModel = new ClickerMenuModel(_gameStateMachine);
          clickerMenuView.Construct(clickerMenuModel);

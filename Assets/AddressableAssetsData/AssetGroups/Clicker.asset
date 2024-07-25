@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Clicker
+  m_EditorClassIdentifier: 
+  m_GroupName: Clicker
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6e97b448fc6e0bb4a88bf9d4e74df343
+  m_SerializeEntries:
+  - m_GUID: 5638f532fa5696d479994b5da3c00754
+    m_Address: Clicker/ClickerMenu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 25a31766909400540871bc3eb3799a9c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d28bdb36d15b64044adbc1342fc198d8, type: 2}
+    - {fileID: 11400000, guid: caf4128eabe9cd740b031065ef423fcb, type: 2}

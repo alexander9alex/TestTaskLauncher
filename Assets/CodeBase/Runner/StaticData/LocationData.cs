@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Serialization;
 
 namespace CodeBase.Runner.StaticData
@@ -6,9 +7,8 @@ namespace CodeBase.Runner.StaticData
    [CreateAssetMenu(menuName = "Static Data/Runner/Location Data", fileName = "LocationData", order = 0)]
    internal class LocationData : ScriptableObject
    {
-      [FormerlySerializedAs("Location")]
-      public GameObject RunnerLocation;
-      public GameObject Finish;
+      public AssetReferenceGameObject RunnerLocationReference;
+      public AssetReferenceGameObject FinishReference;
       public Vector3 FinishPosition;
       public Vector3 HeroPosition;
    }

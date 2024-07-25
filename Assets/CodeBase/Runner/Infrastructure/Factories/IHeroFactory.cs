@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace CodeBase.Runner.Infrastructure.Factories
 {
    internal interface IHeroFactory
    {
-      void CreateHero();
+      Task CreateHero();
       void CleanUp();
    }
 }

@@ -10,10 +10,15 @@ namespace CodeBase.Launcher.Infrastructure.Factories
    {
       private readonly MenuData _menuData;
       private readonly ILauncherStateMachine _launcherStateMachine;
+      private readonly IClickerAssets _clickerAssets;
+      private readonly IRunnerAssets _runnerAssets;
 
-      public LauncherUiFactory(ILauncherStaticData launcherStaticData, ILauncherStateMachine launcherStateMachine)
+      public LauncherUiFactory(ILauncherStaticData launcherStaticData, ILauncherStateMachine launcherStateMachine,
+         IClickerAssets clickerAssets, IRunnerAssets runnerAssets)
       {
          _launcherStateMachine = launcherStateMachine;
+         _clickerAssets = clickerAssets;
+         _runnerAssets = runnerAssets;
          _menuData = launcherStaticData.GetLauncherMenuData();
       }
 
@@ -21,7 +26,7 @@ namespace CodeBase.Launcher.Infrastructure.Factories
       {
          GameObject mainMenuPrefab = _menuData.MainMenu;
          MainMenuView mainMenuView = Object.Instantiate(mainMenuPrefab).GetComponent<MainMenuView>();
-         MainMenuModel mainMenuModel = new MainMenuModel(_launcherStateMachine);
+         MainMenuModel mainMenuModel = new MainMenuModel(_launcherStateMachine, _clickerAssets, _runnerAssets);
          mainMenuView.Construct(mainMenuModel);
       }
    }

@@ -3,7 +3,6 @@ using CodeBase.Clicker.Data;
 using CodeBase.Clicker.Infrastructure.Services;
 using CodeBase.Clicker.Infrastructure.States;
 using CodeBase.Infrastructure;
-using CodeBase.Infrastructure.Services;
 
 namespace CodeBase.Clicker.UI
 {

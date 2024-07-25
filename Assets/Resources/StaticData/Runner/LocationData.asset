@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c07d0a997ff4c51b372606b4e9e0a7d, type: 3}
   m_Name: LocationData
   m_EditorClassIdentifier: 
-  RunnerLocation: {fileID: 1959542423316668991, guid: 23ec78d8683e46446ac1fbcb566467a8, type: 3}
-  Finish: {fileID: 4260393215342054434, guid: c4c8a8af68169ec4c8749e38f58b1997, type: 3}
+  RunnerLocationReference:
+    m_AssetGUID: 23ec78d8683e46446ac1fbcb566467a8
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  FinishReference:
+    m_AssetGUID: c4c8a8af68169ec4c8749e38f58b1997
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   FinishPosition: {x: 0, y: 1.25, z: 20}
   HeroPosition: {x: 0, y: 1.5, z: -20}
